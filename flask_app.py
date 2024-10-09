@@ -18,4 +18,4 @@ def contextoRequisicao():
     user_agent = request.headers.get('User-Agent')
     ip_agent = request.remote_addr
     base_url = request.host
-    return '<h1>Avaliação contínua: Aula 030</h1><h2>Seu navegador é: {}</h2><h2>O IP do computador remoto: {}</h2><h2>O host da aplicação é: {}</h2><p><a href="./">Voltar</a></p>'.format(user_agent, ip_agent, base_url)
+    return '<h1>Avaliação contínua: Aula 030</h1><h2>Seu navegador é: {}</h2><h2>O IP do computador remoto é: {}</h2><h2>O host da aplicação é: {}</h2><p><a href="./">Voltar</a></p>'.format(user_agent, ip_agent, base_url)
