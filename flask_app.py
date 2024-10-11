@@ -16,4 +16,4 @@ def index():
 
 @app.route('/user/<name>')
 def name(name):
-    return render_template('user.html')
+    return render_template('user.html', name=name)
