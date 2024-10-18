@@ -18,8 +18,8 @@ def index():
 def user(name, prontuario, instituicao):
     return render_template('user.html', name=name, prontuario=prontuario, instituicao=instituicao)
 
-@app.route('/contextorequisicao')
-def contextorequisicao():
+@app.route('/contextorequisicao/<name>')
+def contextorequisicao(name):
     navegador=request.headers.get('Users-Agent')
     ip_agent=request.remote_addr
     base_url=request.host
