@@ -18,12 +18,12 @@ def index():
 def user(name, prontuario, instituicao):
     return render_template('user.html', name=name, prontuario=prontuario, instituicao=instituicao)
 
-#@app.route('/contextorequisicao')
-##def requisicao():
-#    navegador=request.headers.get('Users-Agent')
-#    ip_agent=request.remote_addr
-#    base_url=request.host
-#    return render_template('contextorequisicao.html', navegador=navegador, ip=ip_agent, base_url=base_url)
+@app.route('/contextorequisicao')
+def contextorequisicao():
+    navegador=request.headers.get('Users-Agent')
+    ip_agent=request.remote_addr
+    base_url=request.host
+    return render_template('contextorequisicao.html', navegador=navegador, ip=ip_agent, base_url=base_url)
 
 @app.errorhandler(404)
 def page_not_found(e):
