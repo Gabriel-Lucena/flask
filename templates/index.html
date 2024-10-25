@@ -8,7 +8,10 @@
 
 <form method="POST">
     {{ form.hidden_tag() }}
-    {{ form.name.label }} {{ form.name(id=name) }}
-    {{ form.submit }}
+
+    <div class="form-group required">
+        {{ form.name.label(class="control-label") }} {{ form.name(class="form-control", id=name) }}
+    </div>
+    {{ form.submit(class="btn btn-default", id=submit) }}
 </form>
 {% endblock %}

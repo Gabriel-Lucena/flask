@@ -11,7 +11,7 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
 class NameForm(FlaskForm):
-    name = StringField('qual é o seu nome?', validators= [DataRequired()])
+    name = StringField('What is your name?', validators= [DataRequired()])
     submit = SubmitField('Submit')
 
 app = Flask(__name__)
