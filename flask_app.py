@@ -11,7 +11,7 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
 class NameForm(FlaskForm):
-    name = StringField('What is your name?', validators= [DataRequired()])
+    name = StringField('Informe o seu nome', validators= [DataRequired()])
     submit = SubmitField('Submit')
 
 app = Flask(__name__)
@@ -25,7 +25,7 @@ def index():
     if form.validate_on_submit():
         old_name = session.get('name')
         if old_name is not None and old_name != form.name.data:
-            flash('Looks like you have changed your name!')
+            flash('Você alterou o seu nome!')
         session['name'] = form.name.data
         return redirect(url_for('index'))
     return render_template('index.html', form=form, name=session.get('name'))
