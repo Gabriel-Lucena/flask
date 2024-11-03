@@ -4,13 +4,21 @@
 
 <div class="page-header">
     <h1> Olá, {% if name %} {{ name }}{% else %}Stranger{% endif %}!</h1>
+
+    <h3>A sua Instituição de ensino é {% if instituicao %} {{ instituicao }} {% else %} {{ instituicao }} {% endif %}</h3>
+    <h3>Está cursando a disciplina de {% if disciplina %} {{ disciplina }} {% else %} {% endif %}</h3>
+
+    <h6>O IP do computador remoto é: </h6>
+    <h6>O host da aplicação é: </h6>
 </div>
 
 <form method="POST">
     {{ form.hidden_tag() }}
 
     <div class="form-group required">
-        {{ form.name.label(class="control-label") }} {{ form.name(class="form-control", id="name") }}
+        {{ form.name.label(class="control-label") }}
+        {{ form.name(class="form-control", id="name") }}
+
     </div>
     {{ form.submit(class="btn btn-default", id="submit") }}
 </form>
