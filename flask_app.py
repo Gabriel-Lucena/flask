@@ -7,14 +7,14 @@ from flask_moment import Moment
 from datetime import datetime
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired
 
 class StudentForm(FlaskForm):
     name = StringField('Informe o seu nome', validators= [DataRequired()])
     surname = StringField('Informe o seu sobrenome:', validators= [DataRequired()])
     instituicao = StringField('Informe a sua Instituição de ensino:', validators= [DataRequired()])
-    disciplina = StringField('Informe a sua disciplina', validators= [DataRequired()])
+    disciplina = SelectField('Informe a sua disciplina', choices=[('DSWA5', 'DSWA5'), ('DWBA4', 'DWBA4'), ('Gestão de projetos', 'Gestão de projetos')], validators= [DataRequired()])
     submit = SubmitField('Submit')
 
 app = Flask(__name__)
@@ -38,7 +38,7 @@ def index():
         session['ip_agent'] = ip_agent
         session['base_url'] = base_url
         return redirect(url_for('index'))
-    return render_template('index.html', form=form, name=session.get('name'), surname=session.get('surname'), instituicao=session.get('instituicao'), disciplina=session.get('disciplina'), ip_agent=session.get('ip_agent'), base_url=session.get('base_url'))
+    return render_template('index.html', form=form, name=session.get('name'), surname=session.get('surname'), instituicao=session.get('instituicao'), disciplina=session.get('disciplina'), ip_agent=session.get('ip_agent'), base_url=session.get('base_url'), current_time=datetime.utcnow())
 
 @app.errorhandler(404)
 def page_not_found(e):
