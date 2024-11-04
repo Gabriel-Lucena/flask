@@ -14,7 +14,7 @@ class StudentForm(FlaskForm):
     name = StringField('Informe o seu nome', validators= [DataRequired()])
     surname = StringField('Informe o seu sobrenome:', validators= [DataRequired()])
     instituicao = StringField('Informe a sua Instituição de ensino:', validators= [DataRequired()])
-    disciplina = SelectField('Informe a sua disciplina', choices=[('DSWA5', 'DSWA5'), ('DWBA4', 'DWBA4'), ('Gestão de projetos', 'Gestão de projetos')], validators= [DataRequired()])
+    disciplina = SelectField('Informe a sua disciplina:', choices=[('DSWA5', 'DSWA5'), ('DWBA4', 'DWBA4'), ('Gestão de projetos', 'Gestão de projetos')], validators= [DataRequired()])
     submit = SubmitField('Submit')
 
 app = Flask(__name__)
