@@ -6,7 +6,7 @@
     <h1> Olá, {% if name %} {{ name }} {{ surname }}{% else %}Estranho{% endif %}!</h1>
 
     <h3>A sua Instituição de ensino é  {{ instituicao }} </h3>
-    <h3>Está cursando a disciplina de {{ disciplina }}</h3>
+    <h3>Está cursando a disciplina de {% if name %} {{ disciplina }} {% else %}{% endif %}</h3>
 
     <br/>
 
