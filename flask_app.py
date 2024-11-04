@@ -25,16 +25,20 @@ moment = Moment(app)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = StudentForm()
+    ip_agent=request.remote_addr
+    base_url=request.host
     if form.validate_on_submit():
         old_name = session.get('name')
-        old_surname = session.get('surname')
-        old_instituicao = session.get('instituicao')
-        old_disciplina = session.get('disciplina')
         if old_name is not None and old_name != form.name.data:
             flash('Você alterou o seu nome!')
         session['name'] = form.name.data
+        session['surname'] = form.surname.data
+        session['instituicao'] = form.instituicao.data
+        session['disciplina'] = form.disciplina.data
+        session['ip_agent'] = ip_agent
+        session['base_url'] = base_url
         return redirect(url_for('index'))
-    return render_template('index.html', form=form, name=session.get('name'), surname=session.get('surname'), instituicao=session.get('instituicao'), disciplina=session.get('disciplina'))
+    return render_template('index.html', form=form, name=session.get('name'), surname=session.get('surname'), instituicao=session.get('instituicao'), disciplina=session.get('disciplina'), ip_agent=session.get('ip_agent'), base_url=session.get('base_url'))
 
 @app.errorhandler(404)
 def page_not_found(e):
