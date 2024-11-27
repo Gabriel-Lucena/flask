@@ -15,7 +15,7 @@
 {{ wtf.quick_form(form) }}
 
 <h2>Relação de usuários cadastrados</h2>
-
+<h4>Quantidade: {% if users_len %} {{ users_len }} {% else %} Não há usuários cadastrados. {% endif %}</h4>
 <table class="table">
 
     <thead>
