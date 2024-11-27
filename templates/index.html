@@ -20,7 +20,7 @@
 
     <thead>
         <tr>
-            <th>Nome de usuário</th>
+            <th>Nome do usuário</th>
             <th>Função</th>
         </tr>
     </thead>
@@ -49,15 +49,15 @@
         <tr>
             <td>{{ role.name }}</td>
             <td>
-                {% for user in users %}
-                    {% if role.name == user.role.name %}
-                        <ol>
+                <ol>
+                    {% for user in users %}
+                        {% if role.name == user.role.name %}
                             <li>
                             {{user.username}}
                             </li>
-                        </ol>
-                    {% endif %}
-                {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </ol>
             </td>
         </tr>
         {% endfor %}
