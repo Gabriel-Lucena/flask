@@ -15,7 +15,7 @@
 {{ wtf.quick_form(form) }}
 
 <h2>Relação de usuários cadastrados</h2>
-<h4>Quantidade: {% if users_len %} {{ users_len }} {% else %} Não há usuários cadastrados. {% endif %}</h4>
+<h4>Quantidade: {% if users_len %}{{ users_len }}{% else %}Não há usuários cadastrados.{% endif %}</h4>
 <table class="table">
 
     <thead>
@@ -33,4 +33,36 @@
         {% endfor %}
     </tbody>
 </table>
+
+<h2>Relação de funções cadastradas</h2>
+<h4>Quantidade: {% if roles %}{{ roles_len }}{% else %}Não há funções cadastradas.{% endif %}</h4>
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Funções</th>
+            <th>Usuários</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for role in roles %}
+        <tr>
+            <td>{{ role.name }}</td>
+            <td>
+                {% for user in users %}
+                    {% if role.name == user.role.name %}
+                        <ol>
+                            <li>
+                            {{user.username}}
+                            </li>
+                        </ol>
+                    {% endif %}
+                {% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
 {% endblock %}

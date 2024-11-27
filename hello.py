@@ -68,13 +68,16 @@ def index():
     form = NameForm()
 
     users = User.query.all()
+    roles = Role.query.all()
+
     users_len = len(users)
+    roles_len = len(roles)
 
 
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.name.data).first()
         if user is None:
-            role = Role.query.filter_by(name="User").first()
+            role = Role.query.filter_by(name=form.role.data).first()
             user = User(username=form.name.data, role=role)
             db.session.add(user)
             db.session.commit()
@@ -84,7 +87,8 @@ def index():
         session['name'] = form.name.data
         return redirect(url_for('index'))
     return render_template('index.html', form=form, name=session.get('name'),
-                           known=session.get('known', False), users=users, users_len=users_len)
+                           known=session.get('known', False), users=users, users_len=users_len,
+                           roles=roles, roles_len=roles_len)
 
 
 
