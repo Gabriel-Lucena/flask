@@ -70,10 +70,6 @@ def index():
     users = User.query.all()
     roles = Role.query.all()
 
-    users_len = len(users)
-    roles_len = len(roles)
-
-
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.name.data).first()
         if user is None:
@@ -87,8 +83,8 @@ def index():
         session['name'] = form.name.data
         return redirect(url_for('index'))
     return render_template('index.html', form=form, name=session.get('name'),
-                           known=session.get('known', False), users=users, users_len=users_len,
-                           roles=roles, roles_len=roles_len)
+                           known=session.get('known', False), users=users,
+                           roles=roles)
 
 
 
