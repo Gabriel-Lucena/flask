@@ -64,12 +64,12 @@ def send_simple_message(to, subject, newUser):
     print('subject: ' + str(app.config['FLASKY_MAIL_SUBJECT_PREFIX']) + ' ' + subject, flush=True)
     print('text: ' + "Novo usuário cadastrado: " + newUser, flush=True)
 
-    resposta = requests.post(app.config['API_URL'], 
-                             auth=("api", app.config['API_KEY']), data={"from": app.config['API_FROM'], 
-                                                                        "to": to, 
-                                                                        "subject": app.config['FLASKY_MAIL_SUBJECT_PREFIX'] + ' ' + subject, 
-                                                                        "text": "Novo usuário cadastrado: " + newUser})
-        
+    resposta = requests.post(app.config['API_URL'],
+                             auth=("api", app.config['API_KEY']), data={"from": app.config['API_FROM'],
+                                                                        "to": to,
+                                                                        "subject": app.config['FLASKY_MAIL_SUBJECT_PREFIX'] + ' ' + subject,
+                                                                        "text": "PT3025616 - Gabriel Lucena da Cunha\nNovo usuário cadastrado: " + newUser})
+
     print('Enviando mensagem (Resposta)...' + str(resposta) + ' - ' + datetime.now().strftime("%m/%d/%Y, %H:%M:%S"), flush=True)
     return resposta
 
@@ -114,7 +114,7 @@ def index():
             print('subject: ' + str(app.config['FLASKY_MAIL_SUBJECT_PREFIX']), flush=True)
             print('text: ' + "Novo usuário cadastrado: " + form.name.data, flush=True)
 
-            if app.config['FLASKY_ADMIN']:                
+            if app.config['FLASKY_ADMIN']:
                 print('Enviando mensagem...', flush=True)
                 send_simple_message([app.config['FLASKY_ADMIN'], "flaskaulasweb@zohomail.com"], 'Novo usuário', form.name.data)
                 print('Mensagem enviada...', flush=True)
