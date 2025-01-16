@@ -4,7 +4,7 @@ from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from datetime import datetime
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -59,7 +59,7 @@ class NameForm(FlaskForm):
 
 class ClassForm(FlaskForm):
     name = StringField('Qual é o nome do curso?', validators=[DataRequired()])
-    description = StringField('Descrição (250 caracteres)')
+    description = TextAreaField('Descrição (250 caracteres)')
     submit = SubmitField('Cadastrar')
 
 
